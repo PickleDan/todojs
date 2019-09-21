@@ -76,7 +76,8 @@ function editTodoItem() {
 }
 
 function deleteTodoItem() {
-
+    const listItem = this.parentNode;
+    todoList.removeChild(listItem);
 }
 
 const todoForm = document.getElementById('todo-form');
@@ -84,4 +85,9 @@ const addInput = document.getElementById('add-input');
 const todoList = document.getElementById('todo-list');
 const todoItems = document.querySelectorAll('.todo-item');
 
-todoForm.addEventListener('submit', addTodoItem);
+function main() {
+    todoForm.addEventListener('submit', addTodoItem);
+    todoItems.forEach(item => bindEvents(item));
+}
+
+main();
